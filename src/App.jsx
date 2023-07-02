@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { useState } from 'react'
 import './App.css'
 
@@ -6,21 +8,20 @@ import './App.css'
 function Midbox(){
   return(
     <div className='mid-box'>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
-        <div className='little-box'></div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
+        <div className='little-box'>1</div>
     </div>
   )
 }
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <main>
