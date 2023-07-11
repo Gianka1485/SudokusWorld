@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './nav.css'
 
 
 
@@ -13,7 +13,7 @@ function DesignScroller(){
             <img src='src\imgs\arrow.png'></img>
           </figure>
   
-          <figure id='design-container'>
+          <figure className='content-container' id='design-container'>
             <img src='src\imgs\sukuna.png' id='design-image'></img>
           </figure>
   
@@ -22,13 +22,52 @@ function DesignScroller(){
           </figure>
         </div>
   
-        <figure id='checkmark'>
+        <figure className='checkmark' id='design-checkmark'>
           <img src='src\imgs\checkmark.png'></img>
         </figure>
       </div>
     )
   }
+  
 
+  function MusicScroller(){
+    return(
+      <div className='scroller-container'>
+        <div className='scroller'>
+          <figure className='scroller-btn'>
+            <img src='src\imgs\arrow.png'></img>
+          </figure>
+  
+          <figure className='content-container' id='music-container'>
+            <img src='src\imgs\sukuna.png' id='music-image'></img>
+          </figure>
+  
+          <figure className='scroller-btn'>
+            <img src='src\imgs\arrow2.png'></img>
+          </figure>
+        </div>
+
+        <figure id='play-music-btn'>
+          <img src='src\imgs\play.png'
+          onClick={()=>{
+            document.getElementById('pause-music-btn').style.display = 'flex';
+            document.getElementById('play-music-btn').style.display = 'none';
+          }}></img>
+        </figure>
+
+        <figure id='pause-music-btn'>
+          <img src='src\imgs\pause.png' onClick={()=>{
+            document.getElementById('pause-music-btn').style.display = 'none';
+            document.getElementById('play-music-btn').style.display = 'flex';
+          }}></img>
+        </figure>
+  
+        <figure className='checkmark' id='music-checkmark'>
+          <img src='src\imgs\checkmark.png'></img>
+        </figure>
+      </div>
+    )
+  }
 
 
 function Navegation(){
@@ -125,6 +164,8 @@ function Navegation(){
               </figure>
   
               <h2>Musica</h2>
+
+              <MusicScroller></MusicScroller>
   
             </div>
   
