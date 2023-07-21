@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/src/assets/Comfortaa.ttf') format('truetype');
+  font-display: swap;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -6,16 +12,15 @@
   list-style-type: none;
   color: #000;
   transition: 0.25s;
+  font-family: 'Comfortaa', sans-serif;
 }
 body{
   background-color: var(--light-blue-1);
 }
-html{
-  scroll-behavior: smooth;
-}
 :root{
   --purple : #995fedff;
   --light-blue-1 : #99ffecff;
+  --btn-border: hsla(0, 0%, 0%, .75);
 }
 
 
@@ -28,8 +33,20 @@ html{
   align-items: center;
   justify-content: center;
  }
+ 
+ #nav #logo-container{
+  margin-top: -50px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
 
- main{
+ #nav #logo-container #logo{
+  width: 100%;
+ }
+
+ #main{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,30 +54,64 @@ html{
   width: 100%;
  }
 
- #logo{
-  background-color: var(--purple);
+
+ #home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+ }
+
+ #logo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ }
+
+#logo{
+  width: 80%;
   color: var(--light-blue-1);
-  margin-top: 50px;
+  margin-top: 30px;
   border-radius: 10px;
-  padding: 10px 25px ;
   font-size: 32px;
  }
+
 
  #play-btn{
   background: none;
   background-color: var(--purple);
-  color: var(--light-blue-1);
-  margin-top: 250px;
-  border-radius: 10px;
-  padding: 15px 70px;
-  font-size: 32px;
+  color: #fff;
+  margin-top: 175px;
+  border-radius: 15px;
+  padding: 7px 45px;
+  font-size: 42px;
+  font-weight: bold;
+  border: 5px solid var(--btn-border);
+  border-radius: 50px;
+  transition: .25s;
+
+  animation: play 1s infinite alternate ease-in-out;
+ }
+ @keyframes play{
+  from{ 
+    padding: 7px 45px;
+    font-size: 42px;
+    opacity: 1;
+  }
+  to{ 
+    padding: 12px 50px;
+    font-size: 45px;
+    opacity: 0.85;
+  }
  }
 
  #sudoku-container{
   margin: 20px 0;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
  }
 
   .sudoku{
@@ -82,7 +133,6 @@ html{
     border-radius: 10px;
     padding: 5px;
   }
-  
   .mid-box{
     width: 33.3333%;
     height: 33.33333333333%;
@@ -91,7 +141,6 @@ html{
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  
   .little-box{
     width: 33.333333%;
     height: 33.33333333%;
@@ -101,7 +150,6 @@ html{
     justify-content: center;
     align-items: center;
   }
-
   #grid{
     opacity: 0;
     left: 5px;
@@ -114,12 +162,26 @@ html{
     position: absolute;
     z-index: 2;
   }
-
   #grid img{
     width: 98%;
   }
+  /*.tu, .ta, .ti{
+    background-color: red;
+  }*/
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media all and (min-width: 370px){
   .sudoku{
@@ -132,6 +194,16 @@ html{
     height: 340px;
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 @media all and (min-width: 620px){

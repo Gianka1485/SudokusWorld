@@ -7,6 +7,7 @@ import './App.css'
 /* IMPORTED COMPONENTS */
 import Navegation from './components/nav'
 import Sudoku from './components/sudoku'
+import Home from './components/home'
 
 
 
@@ -14,25 +15,16 @@ function App() {
 
   return (
     <div id='app'> 
+
       <Navegation></Navegation>
 
-      <main id='main'>
+      <div id='main'>
 
-        <h2 id='logo'>LOGO TITLE</h2>
-        
-        <button id='play-btn' onClick={()=>{
-          document.getElementById('sudoku').style.opacity = '1';
-          document.getElementById('grid').style.opacity = '1';
-        }}>Play</button>
+        <Home></Home>
 
-        <div id='sudoku-container'>
-          <Sudoku></Sudoku>
-          <figure id='grid'>
-            <img src='\src\imgs\grilla2.png'></img>
-          </figure>
-        </div> 
+        <Sudoku></Sudoku>
 
-      </main>
+      </div>
       
     </div>
   )

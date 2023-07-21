@@ -1,3 +1,13 @@
+:root {
+  --invisible: hsla(0, 0%, 0%, 0);
+  --white: hsl(0, 0% , 100%);
+  --page-primary-color: hsl(170, 100%, 85%);
+  --cubes: hsl(265, 100%, 75%);
+  --cubes-shadow: hsl(265, 80%, 65%);
+  --cubes-border: hsla(0, 0%, 0%, .65);
+  --btn-border: hsla(0, 0%, 0%, .75);
+  --play-btn: hsl(265, 80%, 65%);
+}
 body{
   margin: 0;
   padding: 0;
@@ -6,8 +16,28 @@ body{
   list-style-type: none;
 }
 
-html{
-  scroll-behavior: smooth;
+#load {
+  position: absolute;
+
+  display: grid;
+  place-content: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+#load {
+  background-color: var(--page-primary-color);
+  
+  z-index: 1;
+
+  opacity: 0;
+
+  transition: 2s;
+}
+
+#root {
+  z-index: 0;
 }
 
 

@@ -12,8 +12,8 @@
       width: 100%;
     }
   
-    #responsive-buttons{
-      margin-top: .5em;
+    #responsive-buttons-container{
+      margin: .6em .3em;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -28,8 +28,11 @@
     }
   
     #nav-container .nav-main-btn{
-       width: 1.5em;
+       width: 2.5em;
        margin: 0;
+    }
+    #close .nav-main-btn{
+      width: 1.8em;
     }
   
     #nav-container figure img{
@@ -54,13 +57,15 @@
   
    #nav ul, .nav-content{
     width: 100%;
-    height: 50%;
+    height: 53%;
     display: flex;
     background-color: var(--purple);
     flex-direction: column;
     justify-content: center;
     align-items: center;
    }
+
+  
   
    #nav ul h2, .nav-content h2{
     color: var(--light-blue-1);
@@ -75,11 +80,11 @@
     padding: 5px 25px;
     border-radius: 5px;
     margin: 15px 0;
-    font-size: 20px;
+    font-size: 22px;
    }
   
    .nav-buttons:hover{
-    background-color: #fff1;
+    background-color: #fff4;
    }
   
 
@@ -100,11 +105,14 @@
    .back-to-menu img{
     width: 100%;
    }
-  
-  
-  
-  
-  
+
+
+
+
+  .submenu-title{
+    margin-top: 10px;
+  }
+
   .scroller-container{
     display: flex;
     flex-direction: column;
@@ -112,10 +120,9 @@
     align-items: center;
     padding: 15px 15px;
     width: 80%;
-    background-color: white;
+    background-color: #fff;
     border-radius: 15px;
   }
-  
    .scroller{
     width: 100%;
     height: 100%;
@@ -125,38 +132,46 @@
     justify-content: space-between;
     margin-bottom: 10px;
    }
-  
    .scroller-btn{
     width: 35px;
    }
    .scroller-btn img{
     width: 100%;
    }
-  
    .content-container{
     width: 80px;
    }
-  
-   .checkmark{
+
+
+
+
+   .scroller-bottom{
     width: 100%;
     display: flex;
-    justify-content: end;
+    flex-direction: row-reverse;
+    align-items: center;
    }
-   .checkmark > img{
-    width: 8% !important;
-   }
-
    #play-music-btn, #pause-music-btn{
     width: 100%;
     display: flex;
     justify-content: center;
+    margin: 0 30%;
    }
-
    #pause-music-btn{
     display: none;
    }
+    #play-music-btn, #pause-music-btn{
+    width: 30px;
+    height: 30px;
+   }
 
-   #pause-music-btn > img, #play-music-btn > img{
-    width: 12% !important;
+   .checkmark{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;
+   }
+   .checkmark img{
+    width: 100%;
    }
 }

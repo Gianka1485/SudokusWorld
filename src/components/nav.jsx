@@ -1,70 +1,55 @@
-import React from 'react'
+import React, { Children } from 'react'
 import './nav.css'
 
 
+function NavButton({_class, _id, source, press}){
+  return(
+    <figure className={_class} id={_id}>
+      <img src={source} onClick={press}></img>
+    </figure>
+  )
+}
 
 
+function SubMenu({_id, title, children}){
+  return(
+    <div className='nav-content' id={_id}>
 
-function DesignScroller(){
+      <figure className='back-to-menu' onClick={()=>{
+        document.getElementById(_id).style.display = 'none'
+        document.getElementById('btn-container').style.display = 'flex'
+      }}>
+        <img src='src\imgs\arrow.png'></img>
+      </figure>
+  
+      <h2 className='submenu-title'>{title}</h2>
+
+      {children}
+  
+    </div>
+  )
+}
+
+
+function Scroller({containerId, checkmarkId, children}){
     return(
       <div className='scroller-container'>
-        <div className='scroller'>
-          <figure className='scroller-btn'>
-            <img src='src\imgs\arrow.png'></img>
-          </figure>
-  
-          <figure className='content-container' id='design-container'>
-            <img src='src\imgs\sukuna.png' id='design-image'></img>
-          </figure>
-  
-          <figure className='scroller-btn'>
-            <img src='src\imgs\arrow2.png'></img>
-          </figure>
-        </div>
-  
-        <figure className='checkmark' id='design-checkmark'>
-          <img src='src\imgs\checkmark.png'></img>
-        </figure>
-      </div>
-    )
-  }
-  
 
-  function MusicScroller(){
-    return(
-      <div className='scroller-container'>
         <div className='scroller'>
-          <figure className='scroller-btn'>
-            <img src='src\imgs\arrow.png'></img>
-          </figure>
-  
-          <figure className='content-container' id='music-container'>
-            <img src='src\imgs\sukuna.png' id='music-image'></img>
-          </figure>
-  
-          <figure className='scroller-btn'>
-            <img src='src\imgs\arrow2.png'></img>
-          </figure>
+
+          <NavButton _class='scroller-btn' source='src\imgs\arrow.png'></NavButton>
+
+          <NavButton _class='content-container' _id={containerId} source='src\imgs\sukuna.png'></NavButton>
+
+          <NavButton _class='scroller-btn' source='src\imgs\arrow2.png'></NavButton>
+
         </div>
 
-        <figure id='play-music-btn'>
-          <img src='src\imgs\play.png'
-          onClick={()=>{
-            document.getElementById('pause-music-btn').style.display = 'flex';
-            document.getElementById('play-music-btn').style.display = 'none';
-          }}></img>
-        </figure>
+        <div className='scroller-bottom'>
+          <NavButton _class='checkmark' _id={checkmarkId} source='src\imgs\checkmark.png'></NavButton>
 
-        <figure id='pause-music-btn'>
-          <img src='src\imgs\pause.png' onClick={()=>{
-            document.getElementById('pause-music-btn').style.display = 'none';
-            document.getElementById('play-music-btn').style.display = 'flex';
-          }}></img>
-        </figure>
-  
-        <figure className='checkmark' id='music-checkmark'>
-          <img src='src\imgs\checkmark.png'></img>
-        </figure>
+          {children}
+        </div>
       </div>
     )
   }
@@ -74,13 +59,11 @@ function Navegation(){
     return(
       <section id='nav-container'>
   
-          <section id='responsive-buttons'> 
+          <section id='responsive-buttons-container'> 
 
             <a href='#nav' id='open'>
-              <figure className='nav-main-btn'>
-                <img 
-                src='src\imgs\burger.png'  
-                onClick={()=>{
+              <NavButton _class='nav-main-btn' source='src\imgs\burger.png'
+                press={()=>{
                   document.getElementById('close').style.display = 'block';
                   document.getElementById('open').style.display = 'none';
   
@@ -90,22 +73,19 @@ function Navegation(){
   
                   document.getElementById('main').style.display = 'none';
                 }}
-                ></img>
-              </figure>
+              ></NavButton>
             </a>
             
             <a href='#' id='close'>
-              <figure className='nav-main-btn'>
-                <img src='\src\imgs\close.png' 
-                onClick={()=>{
+              <NavButton _class='nav-main-btn' source='src\imgs\close.png'
+                press={()=>{
                   document.getElementById('open').style.display = 'block';
                   document.getElementById('close').style.display = 'none';
   
                   document.getElementById('nav').style.opacity = '0';
                   document.getElementById('main').style.display = 'flex';
                 }}
-                ></img>
-              </figure>
+              ></NavButton>
             </a>
 
           </section>
@@ -115,7 +95,9 @@ function Navegation(){
           <nav id='nav'>
             <ul className='nav-content' id='btn-container'>
   
-              <h2>LOGO TITLE</h2>
+              <figure id='logo-container'>
+                <img id='logo' src='\src\imgs\title.svg'></img>
+              </figure>
   
               <li>
                 <button className='nav-buttons' onClick={()=>{
@@ -138,49 +120,31 @@ function Navegation(){
                 }}>Creditos</button>
               </li>
             </ul>
-  
-            <div className='nav-content' id='design'>
-                
-              <figure className='back-to-menu' onClick={()=>{
-                document.getElementById('design').style.display = 'none'
-                document.getElementById('btn-container').style.display = 'flex'
-              }}>
-                <img src='src\imgs\arrow.png'></img>
-              </figure>
-  
-              <h2>Diseños</h2>
-  
-              <DesignScroller></DesignScroller>
-  
-            </div>
-  
-            <div className='nav-content' id='music'>
 
-              <figure className='back-to-menu' onClick={()=>{
-                  document.getElementById('music').style.display = 'none'
-                  document.getElementById('btn-container').style.display = 'flex'
-                }}>
-                <img src='src\imgs\arrow.png'></img>
-              </figure>
-  
-              <h2>Musica</h2>
+            
+            <SubMenu _id='design' title='Design' containerId='design-container' checkmarkId='design-checkmark' children={<Scroller></Scroller>}></SubMenu>
 
-              <MusicScroller></MusicScroller>
-  
-            </div>
-  
-            <div className='nav-content' id='credits'>
-  
-              <figure className='back-to-menu' onClick={()=>{
-                  document.getElementById('credits').style.display = 'none'
-                  document.getElementById('btn-container').style.display = 'flex'
-                }}>
-                <img src='src\imgs\arrow.png'></img>
-              </figure>
+            <SubMenu _id='music' title='Music' containerId='music-container' checkmarkId='music-checkmark' children={
+              <Scroller children={
+                <>
+                  <NavButton _id='play-music-btn' source='src\imgs\play.png' 
+                    press={()=>{
+                      document.getElementById('pause-music-btn').style.display = 'flex';
+                      document.getElementById('play-music-btn').style.display = 'none';
+                    }}
+                  >
+                  </NavButton>
 
-              <h2>Creditos</h2>
-  
-            </div>
+                  <NavButton _id='pause-music-btn' source='src\imgs\pause.png'
+                    press={()=>{
+                      document.getElementById('pause-music-btn').style.display = 'none';
+                      document.getElementById('play-music-btn').style.display = 'flex';
+                    }}
+                  ></NavButton>
+                </>
+              }></Scroller>}></SubMenu>
+
+            <SubMenu _id='credits' title='Credits'></SubMenu>
 
           </nav>
         </section>
